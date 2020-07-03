@@ -1,0 +1,11 @@
+<div class="dropdown show">
+  <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+    aria-haspopup="true" aria-expanded="false">
+    Select labels
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item" [ngClass]="{active: selectedLabels.indexOf(label.name) > -1}" *ngFor="let label of labels" (click)="onSelect(label.name)">{{ label.name }}</a>
+  </div>
+</div>
+<button (click)="onSubmit()">SUBMIT</button>

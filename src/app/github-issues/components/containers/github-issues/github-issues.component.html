@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <input type="text" #search (keyup)="getSearchResults(search.value)">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <app-github-labels-dropdown (labelSelect)="onLabelSelect($event)" [labels]="labels"></app-github-labels-dropdown>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="label-container" *ngFor="let issue of issues">
+        <app-github-issue-element [issue]="issue"></app-github-issue-element>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          <li class="page-item" [ngClass]="{disabled: currentIndex === 1}">
+            <a class="page-link" tabindex="-1" (click)="onPaginationClick(currentIndex - 1)">Previous</a>
+          </li>
+          <li *ngFor="let page of totalPagesToShow; let i=index;" class="page-item">
+            <a class="page-link" [ngClass]="{active: currentIndex + i === currentIndex}" (click)="onPaginationClick(currentIndex + i)">{{ currentIndex + i }}</a>
+          </li>
+          <li class="page-item" [ngClass]="{disabled: currentIndex === lastIndex - totalPagesToShow.length + 1}">
+            <a class="page-link" (click)="onPaginationClick(currentIndex + 1)">Next</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</div>

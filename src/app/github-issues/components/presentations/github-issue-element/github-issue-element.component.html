@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-9">
+      <div class="title">{{ issue.title }}</div>
+      <div *ngFor="let label of issue.labels">
+        <app-github-issue-label [label]="label"></app-github-issue-label>
+      </div>
+      <div>
+        <span *ngIf="issue.number">#{{ issue.number }}</span>
+        <span>by {{ issue.user.login }}</span>
+      </div>
+    </div>
+    <div class="col-3">
+
+    </div>
+  </div>
+</div>
